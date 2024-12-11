@@ -54,6 +54,55 @@ print("Accounts:", accounts)
 balance = web3.eth.get_balance(accounts[0])
 print(f"Balance of first account: {web3.fromWei(balance, 'ether')} ETH")
 
+
+print("----------------------------------------------------------------")
+
+
+WEB3_PROVIDER = "http://127.0.0.1:8545"
+web3 = Web3(Web3.HTTPProvider(WEB3_PROVIDER))
+
+if web3.is_connected():
+    print("Connected to Ethereum node1111111111111")
+    print("Connected to Ethereum node1111111111111")
+    print("Connected to Ethereum node1111111111111")
+    print("Connected to Ethereum node1111111111111")
+    print("Connected to Ethereum node1111111111111")
+    print("Connected to Ethereum node1111111111111")
+    print("Connected to Ethereum node1111111111111")
+    print("Connected to Ethereum node1111111111111")
+    print("Connected to Ethereum node1111111111111")
+    print("Connected to Ethereum node1111111111111")
+    print("Connected to Ethereum node1111111111111")
+    print("Connected to Ethereum node1111111111111")
+    print("Connected to Ethereum node1111111111111")
+    print("Connected to Ethereum node1111111111111")
+    print("Connected to Ethereum node1111111111111")
+else:
+    print("Failed to connect111111111111111111111111")
+    print("Failed to connect111111111111111111111111")
+    print("Failed to connect111111111111111111111111")
+    print("Failed to connect111111111111111111111111")
+    print("Failed to connect111111111111111111111111")
+    print("Failed to connect111111111111111111111111")
+    print("Failed to connect111111111111111111111111")
+    print("Failed to connect111111111111111111111111")
+    print("Failed to connect111111111111111111111111")
+    print("Failed to connect111111111111111111111111")
+    print("Failed to connect111111111111111111111111")
+    print("Failed to connect111111111111111111111111")
+    print("Failed to connect111111111111111111111111")
+    print("Failed to connect111111111111111111111111")
+    print("Failed to connect111111111111111111111111")
+    print("Failed to connect111111111111111111111111")
+
+# Get accounts (Geth provides pre-funded accounts in dev mode)
+accounts = web3.eth.accounts
+print("Accounts1111111111111:", accounts)
+
+# Get balance of the first account
+balance = web3.eth.get_balance(accounts[0])
+print(f"Balance of first account: {web3.fromWei(balance, 'ether')} ETH 1111111111111111111")
+
 # logger = logging.getLogger('django')
 
 # # Load environment variables

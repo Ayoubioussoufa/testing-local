@@ -53,7 +53,6 @@ services:
   backend:
     container_name: backend
     build: ./backend
-    image: backend
     restart: always
     ports:
       - "8001:8001"
@@ -67,18 +66,20 @@ services:
   geth_node:
     image: ethereum/client-go:latest
     container_name: geth-node
-    # command: --dev --http --http.api "web3,eth,net,personal,miner"
-    command: ["--http", "--http.addr", "0.0.0.0", "--http.port", "8545", "--http.api", "web3,eth,net,personal", "--syncmode", "snap"]
+    command: ["--http", "--http.addr", "0.0.0.0", "--http.port", "8545", "--http.api", "web3,eth,net,personal"]
 
     ports:
       - "8545:8545"   # Exposes the RPC port
-      - "30303:30303" # Exposes the p2p port (optional, for node-to-node communication)
     volumes:
       - ./data:/root/.ethereum
     networks:
       - my-net
     environment:
       - GETH_DATA_DIR=/root/.ethereum
+    healthcheck:  
+      test: ["CMD", "curl", "-f", "http://localhost:8545"]
+      interval: 30s
+      retries: 3
 
 volumes:
   postgres_data:
