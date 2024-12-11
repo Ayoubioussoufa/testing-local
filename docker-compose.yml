@@ -66,12 +66,12 @@ services:
   geth_node:
     image: ethereum/client-go:latest
     container_name: geth-node
-    command: ["--http", "--http.addr", "0.0.0.0", "--http.port", "8545", "--http.api", "web3,eth,net,personal"]
+    command: ["--dev", "--http", "--http.addr", "0.0.0.0", "--http.port", "8545", "--http.api", "web3,eth,net,personal", "--allow-insecure-unlock"]
 
     ports:
       - "8545:8545"   # Exposes the RPC port
     volumes:
-      - ./data:/root/.ethereum
+      - ./geth/gethdata:/root/.ethereum
     networks:
       - my-net
     environment:
