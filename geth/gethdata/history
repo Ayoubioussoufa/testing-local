@@ -1,0 +1,2 @@
+eth.accounts
+personal.exportRawKey(eth.accounts[0], "123456")

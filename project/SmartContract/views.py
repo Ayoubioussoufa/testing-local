@@ -9,42 +9,17 @@ import json
 import logging
 
 # Connect to the local Geth node
-WEB3_PROVIDER_URL = "http://geth_node:8545"
+WEB3_PROVIDER_URL = "http://gethnode:8545"
 web3 = Web3(Web3.HTTPProvider(WEB3_PROVIDER_URL))
 
 if web3.is_connected():
     print("Connected to Ethereum node")
     print("Connected to Ethereum node")
-    print("Connected to Ethereum node")
-    print("Connected to Ethereum node")
-    print("Connected to Ethereum node")
-    print("Connected to Ethereum node")
-    print("Connected to Ethereum node")
-    print("Connected to Ethereum node")
-    print("Connected to Ethereum node")
-    print("Connected to Ethereum node")
-    print("Connected to Ethereum node")
-    print("Connected to Ethereum node")
-    print("Connected to Ethereum node")
-    print("Connected to Ethereum node")
-    print("Connected to Ethereum node")
+
 else:
     print("Failed to connect")
     print("Failed to connect")
-    print("Failed to connect")
-    print("Failed to connect")
-    print("Failed to connect")
-    print("Failed to connect")
-    print("Failed to connect")
-    print("Failed to connect")
-    print("Failed to connect")
-    print("Failed to connect")
-    print("Failed to connect")
-    print("Failed to connect")
-    print("Failed to connect")
-    print("Failed to connect")
-    print("Failed to connect")
-    print("Failed to connect")
+
 
 # Get accounts (Geth provides pre-funded accounts in dev mode)
 accounts = web3.eth.accounts
@@ -52,67 +27,20 @@ print("Accounts:", accounts)
 
 # Get balance of the first account
 balance = web3.eth.get_balance(accounts[0])
-print(f"Balance of first account: {web3.fromWei(balance, 'ether')} ETH")
+print(f"Balance of first account: {web3.from_wei(balance, 'ether')} ETH")
 
-
-print("----------------------------------------------------------------")
-
-
-WEB3_PROVIDER = "http://127.0.0.1:8545"
-web3 = Web3(Web3.HTTPProvider(WEB3_PROVIDER))
-
-if web3.is_connected():
-    print("Connected to Ethereum node1111111111111")
-    print("Connected to Ethereum node1111111111111")
-    print("Connected to Ethereum node1111111111111")
-    print("Connected to Ethereum node1111111111111")
-    print("Connected to Ethereum node1111111111111")
-    print("Connected to Ethereum node1111111111111")
-    print("Connected to Ethereum node1111111111111")
-    print("Connected to Ethereum node1111111111111")
-    print("Connected to Ethereum node1111111111111")
-    print("Connected to Ethereum node1111111111111")
-    print("Connected to Ethereum node1111111111111")
-    print("Connected to Ethereum node1111111111111")
-    print("Connected to Ethereum node1111111111111")
-    print("Connected to Ethereum node1111111111111")
-    print("Connected to Ethereum node1111111111111")
-else:
-    print("Failed to connect111111111111111111111111")
-    print("Failed to connect111111111111111111111111")
-    print("Failed to connect111111111111111111111111")
-    print("Failed to connect111111111111111111111111")
-    print("Failed to connect111111111111111111111111")
-    print("Failed to connect111111111111111111111111")
-    print("Failed to connect111111111111111111111111")
-    print("Failed to connect111111111111111111111111")
-    print("Failed to connect111111111111111111111111")
-    print("Failed to connect111111111111111111111111")
-    print("Failed to connect111111111111111111111111")
-    print("Failed to connect111111111111111111111111")
-    print("Failed to connect111111111111111111111111")
-    print("Failed to connect111111111111111111111111")
-    print("Failed to connect111111111111111111111111")
-    print("Failed to connect111111111111111111111111")
-
-# Get accounts (Geth provides pre-funded accounts in dev mode)
-accounts = web3.eth.accounts
-print("Accounts1111111111111:", accounts)
-
-# Get balance of the first account
-balance = web3.eth.get_balance(accounts[0])
-print(f"Balance of first account: {web3.fromWei(balance, 'ether')} ETH 1111111111111111111")
+print("PRIVATE KEY: ", (accounts[0].key))
 
 # logger = logging.getLogger('django')
 
-# # Load environment variables
+# Load environment variables
 # load_dotenv()
 # privateKey = os.getenv('private_key')
-# # print(privateKey)
+# print(privateKey)
 
-# # Contract configuration
+# Contract configuration
 # CONTRACT_ADDRESS = '0x847320669a3e809097cEa3B52a6150C90dA98191'
-# RPC_SEPOLIA = 'https://sepolia.infura.io/v3/6483579a38ee4626b9a67d15ca7fef2d'
+
 # CHAIN_ID = 11155111
 
 # # Load ABI and bytecode
@@ -126,28 +54,25 @@ print(f"Balance of first account: {web3.fromWei(balance, 'ether')} ETH 111111111
 # abi, byteCode = load_contract_data()
 
 # # Initialize Web3
-# w3 = Web3(Web3.HTTPProvider(RPC_SEPOLIA))
-# contract = w3.eth.contract(address=CONTRACT_ADDRESS, abi=abi)
-# account = w3.eth.account.from_key(privateKey)
-# gas_price = w3.eth.gas_price
+# gas_price = web3.eth.gas_price
 
-# # @csrf_exempt
-# # def send_transaction(func, *args):
-# #     try:
-# #         transaction = func(*args).build_transaction({
-# #             'chainId': CHAIN_ID,
-# #             'gasPrice': gas_price,
-# #             'nonce': w3.eth.get_transaction_count(account.address),
-# #         })
-# #         signed_tx = w3.eth.account.sign_transaction(transaction, privateKey)
-# #         hash_tx = w3.eth.send_raw_transaction(signed_tx.raw_transaction)
-# #         w3.eth.wait_for_transaction_receipt(hash_tx, timeout=360)
+# @csrf_exempt
+# def send_transaction(func, *args):
+#     try:
+#         transaction = func(*args).build_transaction({
+#             'chainId': CHAIN_ID,
+#             'gasPrice': gas_price,
+#             'nonce': w3.eth.get_transaction_count(account.address),
+#         })
+#         signed_tx = w3.eth.account.sign_transaction(transaction, privateKey)
+#         hash_tx = w3.eth.send_raw_transaction(signed_tx.raw_transaction)
+#         w3.eth.wait_for_transaction_receipt(hash_tx, timeout=360)
 
-# #         # Call the contract function to get the integer result (e.g., tournamentId)
-# #         if func == contract.functions.createTournament:
-# #             return func().call()  # Assuming this returns the integer
-# #     except Exception as e:
-# #         raise Exception(f"Transaction failed: {str(e)}")  # Rethrow the exception to be caught later
+#         # Call the contract function to get the integer result (e.g., tournamentId)
+#         if func == contract.functions.createTournament:
+#             return func().call()  # Assuming this returns the integer
+#     except Exception as e:
+#         raise Exception(f"Transaction failed: {str(e)}")  # Rethrow the exception to be caught later
 
 # @csrf_exempt
 # def send_transaction(func, *args):

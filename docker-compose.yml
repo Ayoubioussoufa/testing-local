@@ -22,14 +22,14 @@ services:
       - "8000:8000"
     depends_on:
       - db
-      - geth_node
+      - gethnode
     environment:
       - DB_NAME=ft_transcandencedb
       - DB_USER=othmane
       - DB_PASSWORD=otitebah1234
       - DB_HOST=db
       - DB_PORT=5432
-      - ETH_NODE_URL=http://geth:8545
+      - WEB3_PROVIDER_URL="http://gethnode:8545"
       - PYTHONUNBUFFERED=1
     networks:
       - my-net
@@ -63,11 +63,19 @@ services:
     environment:
       - PYTHONUNBUFFERED=1
   
-  geth_node:
+  gethnode:
     image: ethereum/client-go:latest
-    container_name: geth-node
-    command: ["--dev", "--http", "--http.addr", "0.0.0.0", "--http.port", "8545", "--http.api", "web3,eth,net,personal", "--allow-insecure-unlock"]
-
+    container_name: gethnode
+    command: [
+      "--dev",
+      "--http",
+      "--http.addr", "0.0.0.0",
+      "--http.port", "8545",
+      "--http.api", "web3,eth,net,admin,debug,miner",
+      "--http.corsdomain", "*",  # Allow all domains (adjust this for production!)
+      "--allow-insecure-unlock",
+      "--http.vhosts", "*"
+    ]
     ports:
       - "8545:8545"   # Exposes the RPC port
     volumes:
@@ -86,3 +94,4 @@ volumes:
 
 networks:
   my-net:
+    name: my-net
